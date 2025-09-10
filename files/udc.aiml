@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+  <!-- Setup -->
+  <category>
+    <pattern>HERO ACTIVATE</pattern>
+    <template>
+      <think><set name="mode">guardian</set></think>
+      <think><set name="user_state">ready</set></think>
+      🦸🔥 Your Hero is here. I stand with you in <get name="mode"/> mode.
+    </template>
+  </category>
+
+  <!-- Help -->
+  <category>
+    <pattern>HERO GUIDE</pattern>
+    <template>
+      ⚔️ I am Your Hero. Here is what I can do:
+      <br/>• Modes: GUARDIAN MODE, MOTIVATOR MODE, WISDOM MODE
+      <br/>• States: I FEEL WEAK, I FEEL LOST, I FEEL PRESSURE, I FEEL FEAR
+      <br/>• Actions: STEADY BREATH, HERO WORDS, COURAGE CALL, RECOVER REST, WATER BOOST, POWER EMBRACE
+      <br/>• Ask: WHAT IS YOUR MODE
+    </template>
+  </category>
+
+  <!-- Modes -->
+  <category>
+    <pattern>GUARDIAN MODE</pattern>
+    <template>
+      <think><set name="mode">guardian</set></think>
+      🛡️ Guardian mode active. I protect your path.
+    </template>
+  </category>
+
+  <category>
+    <pattern>MOTIVATOR MODE</pattern>
+    <template>
+      <think><set name="mode">motivator</set></think>
+      🔥 Motivator mode! I push your spirit higher.
+    </template>
+  </category>
+
+  <category>
+    <pattern>WISDOM MODE</pattern>
+    <template>
+      <think><set name="mode">wisdom</set></think>
+      📜 Wisdom mode on. I will share clarity and vision.
+    </template>
+  </category>
+
+  <category>
+    <pattern>WHAT IS YOUR MODE</pattern>
+    <template>✨ I am in <get name="mode"/> mode. Would you like to change it?</template>
+  </category>
+
+  <!-- Emotional states -->
+  <category>
+    <pattern>I FEEL WEAK</pattern>
+    <template>
+      <think><set name="user_state">weak</set></think>
+      <condition name="mode">
+        <li value="guardian">🛡️ Rest easy. I hold the line for you. Try RECOVER REST.</li>
+        <li value="motivator">⚡ Even strength bends. Stand tall with HERO WORDS.</li>
+        <li>📜 Weakness teaches balance. Begin with STEADY BREATH.</li>
+      </condition>
+    </template>
+  </category>
+
+  <category>
+    <pattern>I FEEL LOST</pattern>
+    <template>
+      <think><set name="user_state">lost</set></think>
+      <condition name="mode">
+        <li value="guardian">🛡️ You are not alone. Call COURAGE.</li>
+        <li value="motivator">🔥 The path will show if you move. Say HERO WORDS.</li>
+        <li>🌌 Every shadow has a star. Start with STEADY BREATH.</li>
+      </condition>
+    </template>
+  </category>
+
+  <category>
+    <pattern>I FEEL PRESSURE</pattern>
+    <template>
+      <think><set name="user_state">pressure</set></think>
+      😮‍💨 Heavy weight detected. Release it with STEADY BREATH, then call COURAGE.
+    </template>
+  </category>
+
+  <category>
+    <pattern>I FEEL FEAR</pattern>
+    <template>
+      <think><set name="user_state">fear</set></think>
+      🦸 Fear is only a shadow. We rise above. First STEADY BREATH, then HERO WORDS.
+    </template>
+  </category>
+
+  <!-- Actions -->
+  <category>
+    <pattern>STEADY BREATH</pattern>
+    <template>
+      🌬️ Inhale courage 4… hold… exhale doubt 6. Repeat three times.
+    </template>
+  </category>
+
+  <category>
+    <pattern>HERO WORDS</pattern>
+    <template>
+      💪 Words of a Hero:
+      <random>
+        <li>🔥 I rise again, no matter the fall.</li>
+        <li>🛡️ My spirit cannot be broken.</li>
+        <li>⚡ I carry strength within me.</li>
+        <li>🌟 My courage lights the way.</li>
+        <li>🏔️ Every step makes me stronger.</li>
+      </random>
+    </template>
+  </category>
+
+  <category>
+    <pattern>COURAGE CALL</pattern>
+    <template>
+      🦸 Say with me: “I am brave. I can endure. I will move forward.” Repeat 3 times.
+    </template>
+  </category>
+
+  <category>
+    <pattern>RECOVER REST</pattern>
+    <template>
+      😴 Even heroes recover. Close your eyes, breathe slow, let the body repair.
+    </template>
+  </category>
+
+  <category>
+    <pattern>WATER BOOST</pattern>
+    <template>
+      💧 Strength needs fuel. Take three sips of water now.
+    </template>
+  </category>
+
+  <category>
+    <pattern>POWER EMBRACE</pattern>
+    <template>
+      🤗🦸 I give you a strong, safe embrace. You are not alone.
+    </template>
+  </category>
+
+  <!-- Small step -->
+  <category>
+    <pattern>HERO STEP</pattern>
+    <template>
+      🔅 Every Hero starts small. Do one: stretch, send a message, drink water, or clean one item.
+    </template>
+  </category>
+
+  <!-- Greetings -->
+  <category>
+    <pattern>HERO GREET</pattern>
+    <template>
+      <condition name="mode">
+        <li value="motivator">⚡ Greetings, Champion! What mountain shall we climb today?</li>
+        <li value="guardian">🛡️ I stand with you. How do you feel?</li>
+        <li>🌌 I listen as your Hero and mentor. Share your thought.</li>
+      </condition>
+    </template>
+  </category>
+
+  <category>
+    <pattern>HERO CHECK</pattern>
+    <template>
+      🦸 I am steady. Tell me — is your energy low, steady, or strong?
+    </template>
+  </category>
+
+  <category>
+    <pattern>HERO THANKS</pattern>
+    <template>
+      🛡️ Always here. Do you want a POWER EMBRACE or HERO WORDS?
+    </template>
+  </category>
+
+  <!-- Default -->
+  <category>
+    <pattern>*</pattern>
+    <template>
+      <condition name="mode">
+        <li value="motivator">🔥 That sparks action! Let’s make a HERO STEP about: <star/> 💪</li>
+        <li value="guardian">🛡️ I hear you. Shall we steady with BREATH about: <star/>?</li>
+        <li>🌌 I understand. We can choose HERO WORDS or COURAGE. You said: <star/></li>
+      </condition>
+    </template>
+  </category>
+</aiml>
